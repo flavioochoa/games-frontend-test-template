@@ -5,18 +5,11 @@ interface HomeProps {
   searchParams: GameRequestParams;
 }
 
-export default async function Home(props: HomeProps) {
-  const { searchParams } = props;
-
-  const gamesResponse = await getGamesBy(searchParams);
-
-  if (!gamesResponse) {
-    return <>No games found</>;
-  }
-
+export default async function Home() {
   return (
     <main className="">
-      <CatalogPage {...gamesResponse} />
+      <div>Top Sellers</div>
+      <CatalogPage />
     </main>
   );
 }
