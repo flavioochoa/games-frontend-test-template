@@ -17,15 +17,17 @@ export async function GET(request: Request) {
 
   if (page < 1 || isNaN(page)) page = 1;
 
+  // In order to have "see more" functionality
+  // TODO: Change this to 2000 before release
   // Mock a delay to simulate a real API
-  await delay(2000);
+  await delay(100);
 
-  const fromIndex = (page - 1) * ITEMS_PER_PAGE;
+  const totalPages = Math.ceil(games.length / ITEMS_PER_PAGE);
+  const currentPage = page;
+
+  const fromIndex = 0;
   const toIndex = page * ITEMS_PER_PAGE;
   games = games.slice(fromIndex, toIndex);
-
-  const totalPages = Math.ceil(allGames.length / ITEMS_PER_PAGE);
-  const currentPage = page;
 
   return Response.json({ games, availableFilters, totalPages, currentPage });
 }
