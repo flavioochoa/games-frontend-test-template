@@ -14,24 +14,31 @@ export default function OrderSummary(props: OrderSummaryProps) {
   }, 0);
 
   return (
-    <div>
-      <div> Order Summary</div>
-
-      <ItemNumberLabel length={games.length} />
-
-      <div>
-        {games.map((game, index) => {
-          return (
-            <div key={`${game.id}.${index}`}>
-              {game.name} {USDollar.format(game.price)}
-            </div>
-          );
-        })}
+    <div className="order-summary">
+      <div className="sub-heading">
+        <div className="label">Order Summary</div>
+        <ItemNumberLabel className="count" length={games.length} />
       </div>
 
-      <hr style={{ width: "100%", height: "1" }} />
+      <div className="order-details">
+        <div className="order-items">
+          {games.map((game, index) => {
+            return (
+              <div className="game" key={`${game.id}.${index}`}>
+                <span>{game.name}</span>
+                <span>{USDollar.format(game.price)}</span>
+              </div>
+            );
+          })}
+        </div>
 
-      <div>Order Total {USDollar.format(total)}</div>
+        <hr className="line" />
+
+        <div className="xs-bold flex flex-row justify-between var(--stroke-secondary)">
+          <span>Order Total</span>
+          <span>{USDollar.format(total)}</span>
+        </div>
+      </div>
     </div>
   );
 }

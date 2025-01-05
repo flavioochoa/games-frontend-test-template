@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { BreadcrumbLayout, Breadcrumb } from "@/components/breadcrumb";
 
 const CartPage = dynamic(
   () => import("@/components/pages/cart-page/cart-page"),
@@ -8,10 +9,15 @@ const CartPage = dynamic(
 
 export default function ShoppingPage() {
   return (
-    <main className="">
-      <Link href="/">Back to catalog</Link>
-      <div>Your Cart</div>
+    <>
+      <BreadcrumbLayout>
+        <Breadcrumb
+          href="/"
+          label="Back to Catalog"
+          icon="/assets/icons/arrow-left.svg"
+        />
+      </BreadcrumbLayout>
       <CartPage />
-    </main>
+    </>
   );
 }

@@ -1,10 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <nav className="flex justify-between">
-      <Link href="/">GamerShop</Link>
-      <Link href="/cart">[CartIcon]</Link>
-    </nav>
+    <header className="sticky top-0 z-50 header">
+      <nav className="flex justify-between pt-5 pr-32 pb-5 pl-32">
+        <Link className="company-name" href="/" prefetch={false}>
+          GamerShop
+        </Link>
+        <Link href="/cart" className="min-w-[25px]">
+          <Image
+            src="/assets/icons/cart.svg"
+            width={20}
+            height={20}
+            alt="cart"
+          />
+        </Link>
+      </nav>
+    </header>
   );
 }

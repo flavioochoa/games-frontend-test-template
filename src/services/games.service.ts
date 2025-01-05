@@ -2,7 +2,7 @@
 
 import { Game } from "@/utils/endpoint";
 
-const API_BASE_URL = "http://localhost:3000/api/games";
+const API_BASE_URL = process.env.API_BASE_URL ?? "";
 
 export interface GameRequestParams {
   genre?: string;
@@ -35,6 +35,7 @@ export async function getGamesBy(params: GameRequestParams) {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
+
     const data: GameApiResponse = await response.json();
 
     return data;

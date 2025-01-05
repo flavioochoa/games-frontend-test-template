@@ -8,7 +8,6 @@ interface HomeProps {
 export default async function Home() {
   return (
     <main className="">
-      <div>Top Sellers</div>
       <CatalogPage />
     </main>
   );

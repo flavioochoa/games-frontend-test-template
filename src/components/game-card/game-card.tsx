@@ -2,28 +2,35 @@
 
 import { Game } from "@/utils/endpoint";
 import { USDollar } from "@/utils/format";
-import useGameLocalStorage from "@/hooks/useGameLocalStorage";
+import Image from "next/image";
+import GameCardButton from "./game-card-button";
 
 export default function GameCard(game: Game) {
   const { image, genre, name, price, isNew } = game;
 
-  const { addToCart } = useGameLocalStorage();
-
-  const addToCartHandler = () => {
-    addToCart(game);
-    // TODO: Add notification to user
-    console.log("game added to cart!", game);
-  };
-
   return (
-    <div>
-      <div>{isNew && "Is New"}</div>
-      <div>{image}</div>
-      <div>{genre}</div>
-      <div>
-        {name} {USDollar.format(price)}
+    <div className="game-card">
+      {isNew && <div className="new-label">New</div>}
+
+      <div className="image">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
-      <button onClick={addToCartHandler}> ADD TO CART</button>
+
+      <div className="description">
+        <div className="genre">{genre}</div>
+        <div className="name-price">
+          <span className="truncate">{name}</span>
+          <span>{USDollar.format(price)}</span>
+        </div>
+      </div>
+
+      <GameCardButton game={game} />
     </div>
   );
 }
