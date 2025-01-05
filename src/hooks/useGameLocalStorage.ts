@@ -35,7 +35,21 @@ const useGameLocalStorage = () => {
     syncState([]);
   };
 
-  return { gamesInCart, addToCart, removeFromCart, removeAllFromCart };
+  const isInCart = (id: string) => {
+    const games = getGames();
+
+    const isInCart = games.some((game) => game.id === id);
+
+    return isInCart;
+  };
+
+  return {
+    gamesInCart,
+    addToCart,
+    removeFromCart,
+    removeAllFromCart,
+    isInCart,
+  };
 };
 
 export default useGameLocalStorage;

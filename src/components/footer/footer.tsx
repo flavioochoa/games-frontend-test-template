@@ -1,10 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 
-// TODO: Add styles and image
-export default function Header() {
+export default function Footer() {
   return (
-    <footer className="">
-      <Link href="/?genre=All&page=1">[Image here]</Link>
+    <footer className="footer flex items-center justify-center">
+      <Link href="/">
+        <Image
+          src="/apply-digital-logo.svg"
+          alt="Logo"
+          width={170}
+          height={45}
+          className="object-contain"
+        />
+      </Link>
     </footer>
   );
 }

@@ -8,8 +8,8 @@ export default function CatalogGenderFilter(props: CatalogFiltersProps) {
   const { availableFilters, value, onChange } = props;
 
   return (
-    <div>
-      Genre |
+    <div className="flex flex-row gap-6">
+      <span className="xs-bold">Genre</span> |
       <select name="select" value={value} onChange={onChange}>
         <option value="All">All</option>
         {availableFilters.map((filter) => {

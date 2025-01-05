@@ -6,6 +6,7 @@ import Loading from "@/app/loading";
 import CatalogGrid from "./catalog-grid";
 import CatalogGenderFilter from "./catalog-gender-filter";
 import useGameCatalogPage from "./useGameCatalogPage";
+import { Button } from "@/components/button";
 
 export default function CatalogPage() {
   const searchParams = useSearchParams();
@@ -26,22 +27,29 @@ export default function CatalogPage() {
     params.set("page", "1");
 
     updateRouteParams(params);
+
+    await init({
+      genre: genreValue,
+      page: 1,
+    });
   };
 
   const nextPage = async () => {
-    if (currentPage <= totalPages) {
-      const nextPage = currentPage + 1;
-
-      const params = new URLSearchParams(searchParams);
-      params.set("page", nextPage.toString());
-
-      updateRouteParams(params);
-
-      await loadMoreGames({
-        genre: genreParam,
-        page: nextPage,
-      });
+    if (currentPage > totalPages || currentPage <= 0) {
+      return;
     }
+
+    const nextPage = currentPage + 1;
+
+    const params = new URLSearchParams(searchParams);
+    params.set("page", nextPage.toString());
+
+    updateRouteParams(params);
+
+    await loadMoreGames({
+      genre: genreParam,
+      page: nextPage,
+    });
   };
 
   const updateRouteParams = (params: URLSearchParams) => {
@@ -64,23 +72,34 @@ export default function CatalogPage() {
     return <Loading />;
   }
 
-  if (parseInt(pageParam) > totalPages) {
+  if (parseInt(pageParam) > totalPages && totalPages > -1) {
     return <>The page does not exists for the current genre</>;
   }
 
   return (
-    <div>
-      <CatalogGenderFilter
-        availableFilters={availableFilters}
-        value={genreParam}
-        onChange={onGenreChange}
-      />
+    <>
+      <div className="page-layout">
+        <div className="bold-2xl">Top Sellers</div>
 
-      <CatalogGrid games={games} />
-
-      <button disabled={currentPage >= totalPages} onClick={nextPage}>
-        See more
-      </button>
-    </div>
+        <div className="flex flex-1 justify-end">
+          <CatalogGenderFilter
+            availableFilters={availableFilters}
+            value={genreParam}
+            onChange={onGenreChange}
+          />
+        </div>
+      </div>
+      <div className="page-layout">
+        <CatalogGrid games={games} />
+        <div className="w-fit">
+          <Button
+            label="SEE MORE"
+            variant="primary"
+            onClick={nextPage}
+            disabled={currentPage >= totalPages}
+          />
+        </div>
+      </div>
+    </>
   );
 }

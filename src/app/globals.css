@@ -2,3 +2,337 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --surface-primary: #ffffff;
+  --surface-secondary: #eeeeee;
+  --color-secondary: #9333ea;
+  --neutral-black: #3b3b3b;
+
+  --spacing-large: 4rem;
+
+  --cta-content-secondary: #3b3b3b;
+
+  --cta-stroke-primary: #3b3b3b;
+  --stroke-secondary: #8f8f8f;
+
+  --cta-content-item: #3b3b3b;
+
+  --stone-100: #f5f5f4;
+
+  --neutral-500: #737373;
+  --neutral-700: #404040;
+
+  --text-primary: #3b3b3b;
+
+  --cta-fill-primary: #585660;
+  --cta-content-primary: #ffffff;
+
+  --icon-primary: #8f8f8f;
+}
+
+@layer base {
+  .bold-2xl {
+    font-family: Archivo;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--neutral-black);
+  }
+
+  .xl-regular {
+    font-family: Archivo;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--text-primary);
+  }
+
+  .xl-bold {
+    font-family: Archivo;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.4;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--text-primary);
+  }
+
+  .xs-bold {
+    font-family: Archivo;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--text-primary);
+  }
+
+  .lg-regular {
+    font-family: Archivo;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--text-primary);
+  }
+
+  .regular {
+    font-family: Archivo;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--neutral-500);
+  }
+}
+
+.button-label {
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.button-base {
+  @apply flex gap-2 pt-4 pr-6 pb-4 pl-6 rounded-lg justify-center;
+}
+
+.button-primary {
+  @apply button-base;
+
+  background-color: var(--cta-stroke-primary);
+
+  .label {
+    @apply button-label;
+    color: var(--cta-content-primary);
+  }
+}
+
+.button-secondary {
+  @apply button-base;
+
+  border: 1px solid var(--cta-stroke-primary);
+
+  .label {
+    @apply button-label;
+
+    color: var(--cta-content-secondary);
+  }
+}
+
+@layer components {
+  .game-card {
+    @apply flex flex-col p-6 gap-5 rounded-2xl relative;
+    @apply w-[335px] md:w-[380px];
+
+    background-color: var(--surface-primary);
+    height: 436px;
+    border: 0.5px solid var(--stroke-secondary);
+
+    .new-label {
+      @apply absolute pt-2 pr-3 pb-2 pl-3 gap-0 rounded;
+
+      top: 40px;
+      left: 40px;
+
+      z-index: 2;
+
+      background-color: var(--stone-100);
+
+      width: 57px;
+      height: 32px;
+      font-family: Archivo;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: var(--cta-content-item);
+    }
+
+    .image {
+      @apply w-[280px] h-[240px];
+      @apply md:w-[332px] md:h-[240px];
+
+      position: relative;
+
+      img {
+        @apply flex gap-0 rounded-t-2xl;
+      }
+    }
+
+    .genre {
+      @apply uppercase;
+
+      font-family: Archivo;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 16px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: var(--neutral-500);
+    }
+
+    .description {
+      @apply flex flex-col gap-3;
+
+      .name-price {
+        @apply flex flex-row flex-1 justify-between gap-4;
+      }
+    }
+  }
+
+  .cart-container {
+    @apply grid gap-20 grid-cols-[repeat(1,minmax(330px,1fr))];
+    @apply sm:grid-cols-[repeat(1,minmax(auto,1fr))];
+    @apply lg:grid-cols-[repeat(2,minmax(auto,1fr))];
+  }
+
+  .cart-container > div {
+    @apply min-w-[330px] max-w-[600px];
+  }
+
+  .cart-card {
+    @apply flex flex-col xl:flex-row pt-5 pr-4 pb-5 pl-4 gap-6 relative;
+
+    background-color: var(--surface-primary);
+    border-bottom: 0.5px solid var(--stroke-secondary);
+
+    .remove {
+      z-index: 2;
+      @apply absolute cursor-pointer;
+
+      width: 12px;
+      height: 12px;
+      top: 20px;
+      right: 10px;
+    }
+
+    .image {
+      @apply w-[280px] h-[240px];
+      @apply md:w-[280px] md:h-[240px];
+
+      position: relative;
+    }
+
+    .genre {
+      @apply flex flex-row flex-1 justify-between gap-4 uppercase;
+
+      font-family: Archivo;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 16px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: var(--neutral-500);
+    }
+
+    .description {
+      @apply flex flex-col gap-5 pt-2 pb-2;
+      @apply md:w-[300px];
+
+      .name-price {
+        @apply flex flex-row flex-1 justify-between gap-4;
+      }
+    }
+  }
+
+  .order-summary {
+    @apply flex flex-col rounded-lg gap-8 pt-8 pr-6 pb-8 pl-6;
+
+    border: 0.5px solid var(--stroke-secondary);
+
+    .sub-heading {
+      @apply flex flex-col gap-3;
+
+      .label {
+        @apply xl-bold;
+      }
+
+      .count {
+        font-family: Archivo;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: var(--text-primary);
+      }
+    }
+
+    .order-details {
+      @apply flex flex-col gap-6;
+
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      .line {
+        background-color: var(--stroke-secondary);
+        height: 1px;
+      }
+
+      .order-items {
+        @apply flex flex-col gap-3;
+
+        .game {
+          @apply flex justify-between lg-regular;
+        }
+      }
+    }
+  }
+
+  .header {
+    height: 64px;
+    background-color: var(--surface-secondary);
+
+    .company-name {
+      min-width: 200px;
+      font-family: Area Normal;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0.4px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: var(--cta-fill-primary);
+    }
+  }
+
+  .footer {
+    height: 172px;
+    background-color: var(--neutral-700);
+  }
+
+  .page-layout {
+    @apply flex flex-col pt-8 pr-6 pb-8 pl-6 gap-12;
+    @apply flex flex-col md:pt-12 md:pr-32 md:pb-12 md:pl-32 md:gap-12;
+  }
+}
