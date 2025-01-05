@@ -309,11 +309,13 @@
   }
 
   .header {
+    @apply flex flex-col pt-8 pr-6 pb-8 pl-6;
+    @apply flex flex-col md:pt-5 md:pr-32 md:pb-5 md:pl-32;
+
     height: 64px;
     background-color: var(--surface-secondary);
 
     .company-name {
-      min-width: 200px;
       font-family: Area Normal;
       font-size: 24px;
       font-weight: 700;

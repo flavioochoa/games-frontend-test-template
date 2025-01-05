@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 header">
-      <nav className="flex justify-between pt-5 pr-32 pb-5 pl-32">
+      <nav className="flex justify-between">
         <Link className="company-name" href="/" prefetch={false}>
           GamerShop
         </Link>
