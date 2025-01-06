@@ -27,6 +27,12 @@ npm install
 
 ### **2. Running the Development Server**
 
+To be able to use environment variables and get data from server, create .env.local file with the following:
+
+```bash
+API_BASE_URL = http://localhost:3000/api/games
+```
+
 Start the development server:
 
 ```bash

@@ -14,7 +14,7 @@ export default function CartCard(props: CartCardProps) {
   const { id, image, genre, name, price, description } = game;
 
   return (
-    <div className="cart-card">
+    <div className="cart-card" data-testid="cart-card">
       <Image
         className="remove"
         src="/assets/icons/close.svg"
