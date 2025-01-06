@@ -3,7 +3,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="footer flex items-center justify-center">
+    <footer
+      className="footer flex items-center justify-center"
+      data-testid="footer"
+    >
       <Link href="/">
         <Image
           src="/apply-digital-logo.svg"

@@ -4,7 +4,7 @@ import CartCard from "./cart-card";
 import { allGames } from "@/utils/endpoint";
 
 describe("CartCard", () => {
-  it("renders button as expected", () => {
+  it("renders card as expected", () => {
     render(<CartCard onRemove={() => {}} game={allGames[0]} />);
 
     const cart = screen.getByTestId("cart-card");

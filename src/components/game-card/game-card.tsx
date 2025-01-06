@@ -9,7 +9,7 @@ export default function GameCard(game: Game) {
   const { image, genre, name, price, isNew } = game;
 
   return (
-    <div className="game-card">
+    <div className="game-card" data-testid="game-card">
       {isNew && <div className="new-label">New</div>}
 
       <div className="image">

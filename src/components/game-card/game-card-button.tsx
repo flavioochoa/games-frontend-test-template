@@ -28,6 +28,7 @@ export default function GameCardButton(props: GameCardButtonProps) {
   if (gameIsInCart) {
     return (
       <Button
+        data-testid="game-card-button"
         label="REMOVE FROM CARD"
         variant="secondary"
         onClick={removeFromCartHandler}
@@ -37,6 +38,7 @@ export default function GameCardButton(props: GameCardButtonProps) {
 
   return (
     <Button
+      data-testid="game-card-button"
       label="ADD TO CARD"
       variant="secondary"
       onClick={addToCartHandler}

@@ -15,16 +15,9 @@ const customJestConfig = {
     // Handle image imports
     "^.+\\.(png|jpg|jpeg|gif|webp|svg)$": "<rootDir>/__mocks__/fileMock.js",
   },
-  collectCoverage: true, // Enable coverage reporting
-  // collectCoverageFrom: [
-  //   "**/*.{js,jsx,ts,tsx}", // Specify file types to include
-  //   "!**/node_modules/**", // Exclude dependencies
-  //   "!**/.next/**", // Exclude Next.js build output
-  //   "!**/coverage/**", // Exclude coverage directory
-  //   "!**/jest.config.js", // Exclude Jest config file
-  // ],
-  coverageDirectory: "<rootDir>/coverage", // Specify output directory for coverage reports
-  coverageReporters: ["text", "lcov", "json", "clover"], // Define coverage report formats
+  collectCoverage: true,
+  coverageDirectory: "<rootDir>/coverage",
+  coverageReporters: ["text", "lcov", "json", "clover"],
 };
 
 module.exports = createJestConfig(customJestConfig);
